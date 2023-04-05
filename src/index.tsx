@@ -14,10 +14,10 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-    <Routes>
-        <Route index element={<Home/>}/>
-        <Route path={employeePath} element={<EmployeeList/>}/>
-        <Route path={errorPath} element={<Error/>} />
+      <Routes>
+        <Route index element={<Home />} />
+        <Route path={employeePath} element={<EmployeeList />} />
+        <Route path={errorPath} element={<Error />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
