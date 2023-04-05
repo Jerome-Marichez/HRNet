@@ -3,18 +3,39 @@ form {
 	display:flex;
 	flex-direction: column;
 	min-width: 280px;
+
 label {
 	display: block;
 	margin-top: 1rem;
 	margin-bottom: 10px;
 }
 
+input { max-height:  20px;  }
+button { min-height: 40px; }
+.react-datepicker-wrapper:nth-child(1) { margin-left: -10px; }
+
+.container-two {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	
+	input:nth-child(2) {
+		margin-left: 10px;
+	}
+}
+
+.address {
+	display: flex;
+	flex-direction: column;
+	margin-top: 10px;
+}
+
 .dropdown { 
 	display: block;
 	border: 1px solid #c5c5c5;
 	border-radius: 2px;
-	cursor: pointer;
 	margin-bottom: 10px;
+	cursor: pointer;
 	
 	.dropdown-control {
 			background-color: #f6f6f6;
@@ -28,6 +49,8 @@ label {
 							background-color: #e7e7e7;
 						}
 	}
+
+	/** Dropdown-option is a internal class about <Dropdown/> Component to target <options> **/
 	.Dropdown-option {
 			padding: 5px;
 			background-color: white;
@@ -39,7 +62,4 @@ label {
 			
 } 
 
-
-.address {
-	margin-top: 10px;
-}}
+}

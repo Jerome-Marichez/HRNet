@@ -18,6 +18,7 @@ export default function Home(): JSX.Element {
 		<div className="container">
 
 			<Link to={employeePath}>View Current Employees</Link>
+			<h2>Create Employee</h2>
 			<FormEmployee states={states} departements={departementsData}/>
 		</div>
 		</>
