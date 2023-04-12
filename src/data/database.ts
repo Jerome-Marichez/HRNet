@@ -1,0 +1,4 @@
+// hrnet
+//https://zluqgjkxodwjmkfnppyr.supabase.co
+// eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpsdXFnamt4b2R3am1rZm5wcHlyIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODEyODk0NDQsImV4cCI6MTk5Njg2NTQ0NH0.-73kdnKGSpjvxMAJDetmkoOTxrbEC-GYmDKBm5K9jVU
+//A7d2gtMUH73NuQi * $R52

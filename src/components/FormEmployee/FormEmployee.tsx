@@ -5,7 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import Dropdown from 'react-dropdown';
 import { Form, Field } from 'react-final-form'
 
-interface selectValue {
+interface FormEmployeeProps {
 	states: Array<string>;
 	departements: Array<string>;
 }
@@ -16,7 +16,7 @@ interface selectValue {
  * @param departements A array of string who contains all Departements
  * @returns A Form Component which allow to create a Employee
  */
-export default function FormEmployee({ states, departements }: selectValue): JSX.Element {
+export default function FormEmployee({ states, departements }: FormEmployeeProps): JSX.Element {
 
 	const [birthDate, setBirthDate] = useState<Date>(new Date());
 	const [startDate, setStartDate] = useState<Date>(new Date());
