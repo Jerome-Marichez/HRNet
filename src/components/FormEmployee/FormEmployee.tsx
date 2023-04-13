@@ -4,6 +4,8 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Dropdown from 'react-dropdown';
 import { Form, Field } from 'react-final-form'
+import Modal from "../Modal/Modal";
+import insertDB from "../../data/database";
 
 interface FormEmployeeProps {
 	states: Array<string>;
@@ -18,81 +20,111 @@ interface FormEmployeeProps {
  */
 export default function FormEmployee({ states, departements }: FormEmployeeProps): JSX.Element {
 
-	const [birthDate, setBirthDate] = useState<Date>(new Date());
-	const [startDate, setStartDate] = useState<Date>(new Date());
-	const [state, setState] = useState<String>(departements[0]);
-	const [departement, setDepartement] = useState<String>(states[0]);
+	const [modalText, setModalText] = useState("Employee Created!");
+	const [modalOpen, setModalOpen] = useState(false);
 
 
-	const onSubmit = (values: any) => {
-		console.log({ values });
-		console.log(birthDate);
-		console.log(startDate);
-		console.log(departement);
-		console.log(state);
+	const onSubmit = async (values: any) => {
+		console.log(values);
+		
+		const requestDone = await insertDB(values);
+
+		if (requestDone) { setModalText("Employee Created!") } else { setModalText("Error failed to create employee :(") }
+		setModalOpen(true);
 	}
 
-
 	return (
-		<Form
-			onSubmit={onSubmit}
-			render={({ handleSubmit, values }) => (
-				<form onSubmit={handleSubmit}>
-					<div className="container-two">
-						<label htmlFor="first-name">First Name</label>
-						<label htmlFor="last-name">Last Name</label>
-					</div>
-					<div className="container-two">
-						<Field type="text" component="input" name="first-name" />
-						<Field type="text" component="input" name="last-name" />
-					</div>
+		<>
+			<Form
+				onSubmit={onSubmit}
+				render={({ handleSubmit, values }) => (
+					<form onSubmit={handleSubmit}>
+						<div className="container-two">
+							<label htmlFor="firstName">First Name</label>
+							<label htmlFor="lastName">Last Name</label>
+						</div>
+						<div className="container-two">
+							<Field type="text" component="input" name="firstName" />
+							<Field type="text" component="input" name="lastName" />
+						</div>
 
-					<div className="container-two">
-						<label htmlFor="date-of-birth">Date of Birth</label>
-						<label htmlFor="start-date">Start Date</label>
-					</div>
-					<div className="container-two">
-						<DatePicker selected={birthDate} onChange={(birthDate: Date) => setBirthDate(birthDate)} />
-						<DatePicker selected={startDate} onChange={(startDate: Date) => setStartDate(startDate)} />
-					</div>
+						<div className="container-two">
+							<label htmlFor="birthDate">Date of Birth</label>
+							<label htmlFor="startDate">Start Date</label>
+						</div>
+						<div className="container-two">
+							<Field name="birthDate">
+								{({ input }) => (
+									<DatePicker
+										name="birthDate"
+										selected={input.value}
+										onChange={(date: Date) => input.onChange(date)} />
+								)}
+							</Field>
+							<Field name="startDate">
+								{({ input }) => (
+									<DatePicker
+										name="startDate"
+										selected={input.value}
+										onChange={(date: Date) => input.onChange(date)} />
+								)}
+							</Field>
+						</div>
 
-					<fieldset className="address">
-						<legend>Address</legend>
+						<fieldset className="address">
+							<legend>Address</legend>
 
-						<label htmlFor="street">Street</label>
-						<Field type="text" component="input" name="street" />
+							<label htmlFor="street">Street</label>
+							<Field type="text" component="input" name="street" />
 
-						<label htmlFor="city">City</label>
-						<Field type="text" component="input" name="city" />
+							<label htmlFor="city">City</label>
+							<Field type="text" component="input" name="city" />
 
-						<label htmlFor="state">State</label>
-						<Dropdown
-							className="dropdown"
-							controlClassName="dropdown-control"
-							options={states}
-							placeholder={states[0]}
-							onChange={(state) => setState(state.value)}
-							arrowClosed={<div>⮟</div>}
-							arrowOpen={<div>⮝</div>}
-						/>
+							<label htmlFor="state">State</label>
 
-						<label htmlFor="zip-code">Zip Code</label>
-						<Field component="input" type="number" name="zipCode" />
-					</fieldset>
+							<Field name="state">
+								{({ input }) => (
+									<Dropdown
+										className="dropdown"
+										controlClassName="dropdown-control"
+										options={states}
+										value={input.value.label}
+										onChange={(selected) => input.onChange(selected.value)}
+										arrowClosed={<div>⮟</div>}
+										arrowOpen={<div>⮝</div>}
+									/>
+								)}
+							</Field>
 
-					<label htmlFor="department">Department</label>
-					<Dropdown
-						className="dropdown"
-						controlClassName="dropdown-control"
-						options={departements}
-						placeholder={departements[0]}
-						onChange={(departement) => setDepartement(departement.value)}
-						arrowClosed={<div>⮟</div>}
-						arrowOpen={<div>⮝</div>}
-					/>
+							<label htmlFor="zipCode">Zip Code</label>
+							<Field component="input" type="number" name="zipCode" />
+						</fieldset>
 
-					<button>Save</button>
-				</form>
-			)} />
+						<label htmlFor="department">Department</label>
+						<Field name="departement">
+							{({ input }) => (
+								<Dropdown
+									className="dropdown"
+									controlClassName="dropdown-control"
+									options={departements}
+									value={input.value}
+									onChange={(selected) => input.onChange(selected.value)}
+									arrowClosed={<div>⮟</div>}
+									arrowOpen={<div>⮝</div>}
+								/>
+							)}
+						</Field>
+
+						<button>Save</button>
+					</form>
+				)}
+			/>
+
+			<Modal isOpen={modalOpen}
+				contentBody={modalText}
+				onClose={() => { setModalOpen(false); }}
+			/>
+
+		</>
 	);
 }
