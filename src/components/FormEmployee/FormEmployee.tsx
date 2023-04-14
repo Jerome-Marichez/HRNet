@@ -14,8 +14,8 @@ interface FormEmployeeProps {
 
 /**
  * 
- * @param states A array of string who contains all States
- * @param departements A array of string who contains all Departements
+ * @param states A array of string that contains all States
+ * @param departements A array of string that contains all Departements
  * @returns A Form Component which allow to create a Employee
  */
 export default function FormEmployee({ states, departements }: FormEmployeeProps): JSX.Element {
@@ -25,11 +25,9 @@ export default function FormEmployee({ states, departements }: FormEmployeeProps
 
 
 	const onSubmit = async (values: any) => {
-		console.log(values);
-		
 		const requestDone = await insertDB(values);
 
-		if (requestDone) { setModalText("Employee Created!") } else { setModalText("Error failed to create employee :(") }
+		if (requestDone) { setModalText("Employee Created!") } else { setModalText("Failed to create employee. Error occurred.") }
 		setModalOpen(true);
 	}
 
@@ -37,6 +35,7 @@ export default function FormEmployee({ states, departements }: FormEmployeeProps
 		<>
 			<Form
 				onSubmit={onSubmit}
+
 				render={({ handleSubmit, values }) => (
 					<form onSubmit={handleSubmit}>
 						<div className="container-two">
@@ -45,6 +44,7 @@ export default function FormEmployee({ states, departements }: FormEmployeeProps
 						</div>
 						<div className="container-two">
 							<Field type="text" component="input" name="firstName" />
+
 							<Field type="text" component="input" name="lastName" />
 						</div>
 
@@ -58,7 +58,8 @@ export default function FormEmployee({ states, departements }: FormEmployeeProps
 									<DatePicker
 										name="birthDate"
 										selected={input.value}
-										onChange={(date: Date) => input.onChange(date)} />
+										onChange={(date: Date) => input.onChange(date)}
+									/>
 								)}
 							</Field>
 							<Field name="startDate">
@@ -66,7 +67,8 @@ export default function FormEmployee({ states, departements }: FormEmployeeProps
 									<DatePicker
 										name="startDate"
 										selected={input.value}
-										onChange={(date: Date) => input.onChange(date)} />
+										onChange={(date: Date) => input.onChange(date)}
+									/>
 								)}
 							</Field>
 						</div>
@@ -81,7 +83,6 @@ export default function FormEmployee({ states, departements }: FormEmployeeProps
 							<Field type="text" component="input" name="city" />
 
 							<label htmlFor="state">State</label>
-
 							<Field name="state">
 								{({ input }) => (
 									<Dropdown
@@ -114,7 +115,6 @@ export default function FormEmployee({ states, departements }: FormEmployeeProps
 								/>
 							)}
 						</Field>
-
 						<button>Save</button>
 					</form>
 				)}
