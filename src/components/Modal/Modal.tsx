@@ -1,5 +1,18 @@
 import "./Modal.scss";
 
+/* <Modal isOpen={modalOpen}
+				contentHeader={<div className="modal-line">HRNet</div>}
+				contentBody={"This is a test"}
+				contentFooter={<div className="modal-line">Employee Created!</div>}
+				verticalAlign="bottom"
+				backgroundColor="rgba(200, 200, 200, 0.5)"
+				modalBackground="grey"
+				modalShadow="0 0 15px grey"
+				modalMaxWidth="150px"
+				modalRadius="300px"
+				onClose={() => { setModalOpen(false); }}
+			/>  */
+
 interface ModalProps {
 	isOpen: boolean;
 	contentBody: string | JSX.Element;
@@ -9,7 +22,7 @@ interface ModalProps {
 	contentFooter?: JSX.Element;
 	contentHeader?: JSX.Element;
 
-	verticalAlign?: string;
+	verticalAlign?: "top" | "middle" | "bottom" | "baseline" | "sub" | "text-top";
 	backgroundColor?: string;
 	modalRadius?: string;
 	modalBackground?: string;
@@ -25,7 +38,8 @@ interface ModalProps {
  * @param contentHeader A optional paramater who allow to display a JSX.Element as a Header
  * @param contentFooter A optional paramater who allow to display a JSX.Element as a footer
  * @param backgroundColor A optional parameter to set background color behind Modal (ex: "rgba(0, 0, 0, 0.75)")
- * @param verticalAlign A optional parameter who allow to display Modal in center top or bottom (check: https://developer.mozilla.org/en-US/docs/Web/CSS/vertical-align to see options) * @param backgroundColor A optional paramater to set Background Color behind Modal (ex: "rgba(0, 0, 0, 0.75)")
+ * @param verticalAlign A optional parameter who allow to display Modal in center top or bottom (check: https://developer.mozilla.org/en-US/docs/Web/CSS/vertical-align to see options) 
+ * @param backgroundColor A optional paramater to set Background Color behind Modal (ex: "rgba(0, 0, 0, 0.75)")
  * @param modalRadius A optional parameter to set radius of Modal Form (ex: "8px")
  * @param modalBackground A optional parameter to set css background propriety (ex: "grey")
  * @param modalShadow A optional parameter to set box-shadow propriety (ex: "0 0 10px #000")
