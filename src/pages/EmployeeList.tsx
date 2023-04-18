@@ -3,19 +3,17 @@ import TableEmployee from "../components/TableEmployee/TableEmployee";
 import { useState, useEffect } from "react";
 import { readDB } from "../data/database";
 import "../globalStyle.scss";
-import { Link } from "react-router-dom";
-import { homePath } from "../utils/routesPath";
 
 export default function EmployeeList(): JSX.Element {
 
 	const [isLoading, setLoading] = useState<boolean>(true);
 	const [error, setError] = useState<boolean>(false);
-	const [rowsData, setRowsData] = useState<string[]>([]);
-	const [columnsData, setColumnsData] = useState<string[]>([]);
+	const [rowsData, setRowsData] = useState<Array<string>>([]);
+	const [columnsData, setColumnsData] = useState<Array<string>>([]);
+
 
 	const loadData = async () => {
 		const data: any = await readDB();
-
 		if (data) {
 			const columnsData: Array<string> = Object.getOwnPropertyNames(data[0]);
 			const rowsData: Array<string> = data.map((object: any) => Object.values(object));
@@ -24,16 +22,14 @@ export default function EmployeeList(): JSX.Element {
 		}
 		else {
 			setError(true);
-		}
-
+		}		
 		setLoading(false);
 	}
-
+	
 
 	useEffect(() => {
 		loadData();
 	}, [])
-
 
 
 	return (
@@ -44,9 +40,8 @@ export default function EmployeeList(): JSX.Element {
 					rowsValues={rowsData}
 					columnsValues={columnsData}
 				/>) :
-				(<h2>{error ? "Error cannot access data" : "Loading..."}</h2>)
+				(<h2>{error ? "Error cannot access data 😭" : "Loading 🖳"}</h2>)
 			}
-			<Link to={homePath}>Home</Link>
 		</div>
 	);
 }

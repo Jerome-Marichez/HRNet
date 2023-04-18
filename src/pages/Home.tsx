@@ -13,8 +13,8 @@ export default function Home(): JSX.Element {
 		<>
 			<div className="title">
 				<h1>HRnet</h1>
-
 			</div>
+
 			<div className="container">
 
 				<Link to={employeePath}>View Current Employees</Link>
