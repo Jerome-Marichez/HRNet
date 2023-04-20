@@ -18,8 +18,8 @@ function connectSupaBase() {
 export default async function insertDB(values: object) {
 	const supabase = connectSupaBase();
 	const response = await supabase.from('hrnet').insert(values);
-	if (response.status !== 201) { return false;} 
-	return true; 
+	if (response.status === 201) { return true; }
+	return false;
 }
 
 /**
@@ -28,7 +28,7 @@ export default async function insertDB(values: object) {
 export async function readDB() {
 	const supabase = connectSupaBase();
 	const response = await supabase.from('hrnet').select('*');
-	const responseData = response.data || null;
-	if (!responseData || response.status !== 200) { return false; }; 
-	return responseData;
+	const responseData = response.data ?? false;
+	if (responseData || response.status === 200) { return responseData; };
+	return false;
 }
