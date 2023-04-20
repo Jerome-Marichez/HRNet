@@ -1,6 +1,48 @@
 .gridjs-search {
 	float: none;
+
 	input {
 		width: 100%;
+	}
+}
+
+.grid-container {
+	font-size: 14px;
+	display: contents;
+
+	>div:first-child {
+		display: contents;
+	}
+
+	.gridjs-table {
+		td,
+		th {
+			text-align: left;
+			padding: 3px 6px;
+			text-overflow: ellipsis;
+			overflow: hidden;
+		}
+
+	}
+
+	.grid-footer {
+		display: flex;
+		padding: 15px;
+		flex-direction: row;
+		gap: 20px;
+
+		.area-flex {
+			padding-left: 40px;
+			display: flex;
+			justify-content: space-evenly;
+			align-items: center;
+		}
+
+		select {
+			background-color: #fff;
+			border: 1px solid #d2d6dc;
+			border-radius: 5px;
+			margin: 10px;
+		}
 	}
 }
