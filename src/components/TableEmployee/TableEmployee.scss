@@ -1,11 +1,3 @@
-.gridjs-search {
-	float: none;
-
-	input {
-		width: 100%;
-	}
-}
-
 .grid-container {
 	font-size: 14px;
 	display: contents;
@@ -15,6 +7,7 @@
 	}
 
 	.gridjs-table {
+
 		td,
 		th {
 			text-align: left;
@@ -23,6 +16,14 @@
 			overflow: hidden;
 		}
 
+	}
+
+	.gridjs-search {
+		float: none;
+
+		input {
+			width: 100%;
+		}
 	}
 
 	.grid-footer {

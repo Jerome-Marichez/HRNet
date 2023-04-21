@@ -8,7 +8,7 @@ export default function EmployeeList(): JSX.Element {
 
 	const [isLoading, setLoading] = useState<boolean>(true);
 	const [error, setError] = useState<boolean>(false);
-	const [rowsData, setRowsData] = useState<Array<string>>([]);
+	const [rowsData, setRowsData] = useState<Array<Array<string>>>([]);
 	const [columnsData, setColumnsData] = useState<Array<string>>([]);
 
 
@@ -16,16 +16,16 @@ export default function EmployeeList(): JSX.Element {
 		const data: any = await readDB();
 		if (data) {
 			const columnsData: Array<string> = Object.getOwnPropertyNames(data[0]);
-			const rowsData: Array<string> = data.map((object: any) => Object.values(object));
+			const rowsData: Array<Array<string>> = data.map((object: any) => Object.values(object));
 			setColumnsData(columnsData);
 			setRowsData(rowsData);
 		}
 		else {
 			setError(true);
-		}		
-		setLoading(false);
+		}
+		setTimeout(() => setLoading(false), 250);
 	}
-	
+
 
 	useEffect(() => {
 		loadData();
