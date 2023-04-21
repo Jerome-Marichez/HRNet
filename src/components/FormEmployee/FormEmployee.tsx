@@ -37,7 +37,7 @@ export default function FormEmployee({ states, departements }: FormEmployeeProps
 				onSubmit={onSubmit}
 
 				render={({ handleSubmit, values }) => (
-					<form onSubmit={handleSubmit}>
+					<form className="form-employee" onSubmit={handleSubmit}>
 						<div className="container-two">
 							<label htmlFor="firstName">First Name</label>
 							<label htmlFor="lastName">Last Name</label>

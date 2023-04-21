@@ -1,8 +1,10 @@
-form {
+.form-employee {
+
 	display: flex;
 	flex-direction: column;
 	min-width: 280px;
 	padding-bottom: 20px;
+
 	label {
 		display: block;
 		margin-top: 1rem;
@@ -33,9 +35,9 @@ form {
 		min-height: 40px;
 
 		&:hover {
-			cursor: pointer; 
+			cursor: pointer;
 			background-color: #e7e7e7;
-			
+
 		}
 	}
 
@@ -73,7 +75,7 @@ form {
 			padding: 5px;
 			padding-left: 15px;
 			padding-right: 15px;
-			
+
 			&:hover {
 				background-color: #e7e7e7;
 			}
@@ -92,26 +94,4 @@ form {
 
 	}
 
-
-}
-
-.modal-line {
-	display: flex;
-	justify-content: center;
-	padding: 5px;
-
-	&:nth-child(1) {
-		border-bottom: 2px solid rgb(233, 233, 233);
-		margin-bottom: 20px;
-	}
-
-	&:nth-child(2) {
-		border-top: 2px solid rgb(233, 233, 233);
-		margin-top: 20px;
-	}
-
-}
-
-.modalStyle {
-	background-color: red;
 }
