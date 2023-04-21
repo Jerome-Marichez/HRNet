@@ -16,6 +16,7 @@ root.render(
       <Routes>
         <Route index element={<Home />} />
         <Route path={employeePath} element={<EmployeeList />} />
+        <Route path={errorPath} element={<Home />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
