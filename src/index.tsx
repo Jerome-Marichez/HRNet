@@ -4,7 +4,6 @@ import './index.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import EmployeeList from './pages/EmployeeList';
 import Home from './pages/Home';
-import Error from './pages/Error';
 import { errorPath, employeePath } from './utils/routesPath';
 
 const root = ReactDOM.createRoot(
@@ -17,7 +16,6 @@ root.render(
       <Routes>
         <Route index element={<Home />} />
         <Route path={employeePath} element={<EmployeeList />} />
-        <Route path={errorPath} element={<Error />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
