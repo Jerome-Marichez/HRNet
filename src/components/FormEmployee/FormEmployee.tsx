@@ -6,6 +6,7 @@ import Dropdown from 'react-dropdown';
 import { Form, Field } from 'react-final-form'
 import Modal from "../Modal/Modal";
 import insertDB from "../../data/database";
+import { readDB } from "../../data/database";
 
 interface FormEmployeeProps {
 	states: Array<string>;
@@ -25,9 +26,15 @@ export default function FormEmployee({ states, departements }: FormEmployeeProps
 
 
 	const onSubmit = async (values: any) => {
+
 		const requestDone = await insertDB(values);
 
-		if (requestDone) { setModalText("Employee Created!") } else { setModalText("Failed to create employee. Error occurred.") }
+		if (requestDone) {
+			setModalText("Employee Created!")
+		} else {
+			setModalText("Failed to create employee. Error occurred.")
+		}
+
 		setModalOpen(true);
 	}
 
@@ -35,17 +42,15 @@ export default function FormEmployee({ states, departements }: FormEmployeeProps
 		<>
 			<Form
 				onSubmit={onSubmit}
-
 				render={({ handleSubmit, values }) => (
-					<form className="form-employee" onSubmit={handleSubmit}>
+					<form data-testid="form-employee" className="form-employee" onSubmit={handleSubmit}>
 						<div className="container-two">
 							<label htmlFor="firstName">First Name</label>
 							<label htmlFor="lastName">Last Name</label>
 						</div>
 						<div className="container-two">
-							<Field type="text" component="input" name="firstName" />
-
-							<Field type="text" component="input" name="lastName" />
+							<Field type="text" component="input" id="firstName" name="firstName" />
+							<Field type="text" component="input" id="lastName" name="lastName" />
 						</div>
 
 						<div className="container-two">
@@ -56,6 +61,7 @@ export default function FormEmployee({ states, departements }: FormEmployeeProps
 							<Field name="birthDate">
 								{({ input }) => (
 									<DatePicker
+										id="birthDate"
 										name="birthDate"
 										selected={input.value}
 										onChange={(date: Date) => input.onChange(date)}
@@ -65,6 +71,7 @@ export default function FormEmployee({ states, departements }: FormEmployeeProps
 							<Field name="startDate">
 								{({ input }) => (
 									<DatePicker
+										id="startDate"
 										name="startDate"
 										selected={input.value}
 										onChange={(date: Date) => input.onChange(date)}
@@ -77,13 +84,13 @@ export default function FormEmployee({ states, departements }: FormEmployeeProps
 							<legend>Address</legend>
 
 							<label htmlFor="street">Street</label>
-							<Field type="text" component="input" name="street" />
+							<Field type="text" component="input" id="street" name="street" />
 
 							<label htmlFor="city">City</label>
-							<Field type="text" component="input" name="city" />
+							<Field type="text" component="input" id="city" name="city" />
 
 							<label htmlFor="state">State</label>
-							<Field name="state">
+							<Field id="state" name="state">
 								{({ input }) => (
 									<Dropdown
 										className="dropdown"
@@ -98,11 +105,11 @@ export default function FormEmployee({ states, departements }: FormEmployeeProps
 							</Field>
 
 							<label htmlFor="zipCode">Zip Code</label>
-							<Field component="input" type="number" name="zipCode" />
+							<Field id="zipCode" component="input" type="number" name="zipCode" />
 						</fieldset>
 
 						<label htmlFor="department">Department</label>
-						<Field name="departement">
+						<Field id="departement" name="departement">
 							{({ input }) => (
 								<Dropdown
 									className="dropdown"
@@ -115,10 +122,11 @@ export default function FormEmployee({ states, departements }: FormEmployeeProps
 								/>
 							)}
 						</Field>
-						<button>Save</button>
+						<button data-testid="button">Save</button>
 					</form>
 				)}
 			/>
+
 
 			<Modal isOpen={modalOpen}
 				contentBody={modalText}
