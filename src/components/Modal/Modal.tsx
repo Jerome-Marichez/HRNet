@@ -4,7 +4,7 @@ import "./Modal.scss";
 				contentHeader={<div className="modal-line">HRNet</div>}
 				contentBody={"This is a test"}
 				contentFooter={<div className="modal-line">Employee Created!</div>}
-				verticalAlign="bottom"
+				modalAlign="bottom"
 				backgroundColor="rgba(200, 200, 200, 0.5)"
 				modalBackground="grey"
 				modalShadow="0 0 15px grey"
@@ -22,8 +22,8 @@ interface ModalProps {
 	contentFooter?: JSX.Element;
 	contentHeader?: JSX.Element;
 
-	verticalAlign?: "top" | "middle" | "bottom" | "baseline" | "sub" | "text-top";
-	backgroundColor?: string;
+	background?: string;
+	modalAlign?: "top" | "middle" | "bottom" | "baseline" | "sub" | "text-top";
 	modalRadius?: string;
 	modalBackground?: string;
 	modalShadow?: string;
@@ -37,9 +37,8 @@ interface ModalProps {
  * @param closeButton A optional parameter who allow to display a JSX.Element as a Close Button
  * @param contentHeader A optional paramater who allow to display a JSX.Element as a Header
  * @param contentFooter A optional paramater who allow to display a JSX.Element as a footer
- * @param backgroundColor A optional parameter to set background color behind Modal (ex: "rgba(0, 0, 0, 0.75)")
- * @param verticalAlign A optional parameter who allow to display Modal in center top or bottom (check: https://developer.mozilla.org/en-US/docs/Web/CSS/vertical-align to see options) 
- * @param backgroundColor A optional paramater to set Background Color behind Modal (ex: "rgba(0, 0, 0, 0.75)")
+ * @param background A optional parameter to set background propriety behind Modal (ex: "rgba(0, 0, 0, 0.75)")
+ * @param modalAlign A optional parameter who allow to display Modal in center top or bottom (check: https://developer.mozilla.org/en-US/docs/Web/CSS/vertical-align to see options) 
  * @param modalRadius A optional parameter to set radius of Modal Form (ex: "8px")
  * @param modalBackground A optional parameter to set css background propriety (ex: "grey")
  * @param modalShadow A optional parameter to set box-shadow propriety (ex: "0 0 10px #000")
@@ -50,16 +49,16 @@ export default function Modal(props: ModalProps): JSX.Element {
 
 	const { isOpen, contentBody, onClose } = props; // Minimal Props
 	const { closeButton, contentFooter, contentHeader } = props; // Custom JSX.Element Props
-	const { backgroundColor, verticalAlign, modalRadius, modalBackground, modalShadow, modalMaxWidth } = props; // CSS Custom Propriety 
+	const { background, modalAlign, modalRadius, modalBackground, modalShadow, modalMaxWidth } = props; // CSS Custom Propriety 
 
 	return (
 		<div className="blocker" style={{
 			display: isOpen ? "inline-block" : "none",
-			backgroundColor: backgroundColor ? backgroundColor : "rgba(0, 0, 0, 0.75)",
+			background: background ? background : "rgba(0, 0, 0, 0.75)",
 		}}>
-			<div className="modal"
+			<div data-testid="modal" className="modal"
 				style={{
-					verticalAlign: verticalAlign ? verticalAlign : "middle",
+					verticalAlign: modalAlign ? modalAlign : "middle",
 					maxWidth: modalMaxWidth ? modalMaxWidth : "500px",
 					background: modalBackground ? modalBackground : "#FFF",
 					borderRadius: modalRadius ? modalRadius : "8px",
