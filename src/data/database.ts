@@ -29,6 +29,6 @@ export async function readDB() {
 	const supabase = connectSupaBase();
 	const response = await supabase.from('hrnet').select('*');
 	const responseData = response.data ?? false;
-	if (responseData || response.status === 200) { return responseData; };
+	if (responseData && response.status === 200) { return responseData; };
 	return false;
 }
