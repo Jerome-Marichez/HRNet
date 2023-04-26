@@ -1,11 +1,10 @@
 
-export const departementsData: Array<any> = ["Sales",
-	"Marketing",
-	"Engineering",
-	"Human Resources",
-	"Legal"]
+interface stateData {
+	name: string,
+	abbreviation: string,
+}
 
-export const statesData: Array<object> = [
+export const statesData: Array<stateData> = [
 	{
 		"name": "Alabama",
 		"abbreviation": "AL"
@@ -243,3 +242,9 @@ export const statesData: Array<object> = [
 		"abbreviation": "WY"
 	}
 ];
+
+export const departementsData: Array<string> = ["Sales",
+	"Marketing",
+	"Engineering",
+	"Human Resources",
+	"Legal"]
