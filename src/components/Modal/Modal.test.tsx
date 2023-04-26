@@ -33,11 +33,13 @@ describe('Modal Tests', () => {
 		const modalMaxWidth = "700px";
 		const modalRadius = "5px"; 
 		const modalShadow = "0 0 30px #000"
+		const background = "grey"; 
 
 		render(
 			<Modal isOpen={false}
 				contentBody={'Hello Jest'}
 				onClose={() => { }}
+				background={background}
 				modalAlign={modalAlign}
 				modalBackground={modalBackground}
 				modalMaxWidth={modalMaxWidth}
@@ -45,10 +47,13 @@ describe('Modal Tests', () => {
 				modalShadow={modalShadow}
 			/>
 		)
-
+		// test style behind modal
+		const blocker = screen.getByTestId("blocker"); 
+		expect(getComputedStyle(blocker).background === background).toBeTruthy(); 
+		
+		// test style modal
 		const myModal = screen.getByTestId("modal"); 
 		const style = getComputedStyle(myModal);
-		
 		expect(style.verticalAlign === modalAlign).toBeTruthy(); 
 		expect(style.maxWidth === modalMaxWidth).toBeTruthy(); 
 		expect(style.background === modalBackground).toBeTruthy();

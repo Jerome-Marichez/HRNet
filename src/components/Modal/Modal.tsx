@@ -52,7 +52,7 @@ export default function Modal(props: ModalProps): JSX.Element {
 	const { background, modalAlign, modalRadius, modalBackground, modalShadow, modalMaxWidth } = props; // CSS Custom Propriety 
 
 	return (
-		<div className="blocker" style={{
+		<div data-testid="blocker" className="blocker" style={{
 			display: isOpen ? "inline-block" : "none",
 			background: background ? background : "rgba(0, 0, 0, 0.75)",
 		}}>
