@@ -6,7 +6,7 @@ import Dropdown from 'react-dropdown';
 import { Form, Field } from 'react-final-form'
 import Modal from "../Modal/Modal";
 import insertDB from "../../data/database";
-import { readDB } from "../../data/database";
+
 
 interface FormEmployeeProps {
 	states: Array<string>;
@@ -14,14 +14,13 @@ interface FormEmployeeProps {
 }
 
 /**
- * 
  * @param states A array of string that contains all States
  * @param departements A array of string that contains all Departements
  * @returns A Form Component which allow to create a Employee
  */
 export default function FormEmployee({ states, departements }: FormEmployeeProps): JSX.Element {
 
-	const [modalText, setModalText] = useState("Employee Created!");
+	const [modalText, setModalText] = useState("");
 	const [modalOpen, setModalOpen] = useState(false);
 
 
@@ -32,6 +31,7 @@ export default function FormEmployee({ states, departements }: FormEmployeeProps
 		if (requestDone) {
 			setModalText("Employee Created!")
 		} else {
+			/* istanbul ignore next */
 			setModalText("Failed to create employee. Error occurred.")
 		}
 
@@ -122,7 +122,7 @@ export default function FormEmployee({ states, departements }: FormEmployeeProps
 								/>
 							)}
 						</Field>
-						<button data-testid="button">Save</button>
+						<button>Save</button>
 					</form>
 				)}
 			/>

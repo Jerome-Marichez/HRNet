@@ -1,4 +1,3 @@
-import { createClient } from "@supabase/supabase-js";
 import insertDB, { readDB } from "./database";
 
 describe('Database Tests', () => {
@@ -9,8 +8,8 @@ describe('Database Tests', () => {
 
 	test('Insert Data Successfully', async () => {
 		const result = await insertDB({
-			"firstName": "TOTO",
-			"lastName": "MOMO",
+			"firstName": "TEST_DB",
+			"lastName": "TEST_DB",
 			"city": "A city",
 			"zipCode": "59140",
 			"street": "A street",

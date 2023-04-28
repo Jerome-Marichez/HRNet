@@ -4,7 +4,7 @@ import Modal from "./Modal";
 
 describe('Modal Tests', () => {
 
-	test("Modal is visible when isOpen is true and its content is visible", () => {
+	test("is visible when isOpen is true and its content is visible", () => {
 		render(
 			<Modal isOpen={true}
 				contentBody={'Hello Jest'}
@@ -15,7 +15,7 @@ describe('Modal Tests', () => {
 		expect(screen.queryByText("Hello Jest")).toBeVisible();
 	});
 
-	test("Modal is not visible when isOpen is false and its content is not visible", () => {
+	test("is not visible when isOpen is false and its content is not visible", () => {
 		render(
 			<Modal isOpen={false}
 				contentBody={'Hello Jest'}
@@ -26,7 +26,7 @@ describe('Modal Tests', () => {
 		expect(screen.queryByText("Hello Jest")).not.toBeVisible();
 	});
 
-	test("Modal styles are customizable and applied to the modal element", () => {
+	test("styles are customizable and applied to the modal element", () => {
 
 		const modalAlign = "top";
 		const modalBackground = "rgba(25, 25, 25, 0.75)";
@@ -59,7 +59,6 @@ describe('Modal Tests', () => {
 		expect(style.background === modalBackground).toBeTruthy();
 		expect(style.borderRadius === modalRadius).toBeTruthy();
 		expect(style.boxShadow === modalShadow).toBeTruthy();
-	
 	});
 
 	

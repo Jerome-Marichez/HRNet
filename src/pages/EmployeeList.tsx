@@ -31,7 +31,6 @@ export default function EmployeeList(): JSX.Element {
 		loadData();
 	}, [])
 
-
 	return (
 		<div id="employee-div" className="container">
 			<h1>Current Employees</h1>

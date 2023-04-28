@@ -1,12 +1,13 @@
 import { createClient } from "@supabase/supabase-js";
 
+const supabaseUrl: string = 'https://zluqgjkxodwjmkfnppyr.supabase.co';
+const supabaseKey: string = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpsdXFnamt4b2R3am1rZm5wcHlyIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODEyODk0NDQsImV4cCI6MTk5Njg2NTQ0NH0.-73kdnKGSpjvxMAJDetmkoOTxrbEC-GYmDKBm5K9jVU";
+
+
 /**
- * 
  * @returns A SupaBase Client connected to the Database
  */
 function connectSupaBase() {
-	const supabaseUrl: string = 'https://zluqgjkxodwjmkfnppyr.supabase.co';
-	const supabaseKey: string = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpsdXFnamt4b2R3am1rZm5wcHlyIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODEyODk0NDQsImV4cCI6MTk5Njg2NTQ0NH0.-73kdnKGSpjvxMAJDetmkoOTxrbEC-GYmDKBm5K9jVU";
 	const supabase = createClient(supabaseUrl, supabaseKey);
 	return supabase;
 }

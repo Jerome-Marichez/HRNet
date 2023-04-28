@@ -1,4 +1,3 @@
-
 interface stateData {
 	name: string,
 	abbreviation: string,
