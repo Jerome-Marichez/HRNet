@@ -14,7 +14,7 @@ export default function EmployeeList(): JSX.Element {
 
 	const loadData = async () => {
 		const data: any = await readDB();
-		if (data[0]) {
+		if (data) {
 			const columnsData: Array<string> = Object.getOwnPropertyNames(data[0]);
 			const rowsData: Array<Array<string>> = data.map((object: any) => Object.values(object));
 			setColumnsData(columnsData);

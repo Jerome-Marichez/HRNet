@@ -7,7 +7,7 @@ const supabaseKey: string = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdX
 /**
  * @returns A SupaBase Client connected to the Database
  */
-function connectSupaBase() {
+export function connectSupaBase() {
 	const supabase = createClient(supabaseUrl, supabaseKey);
 	return supabase;
 }
