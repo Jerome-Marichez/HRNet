@@ -16,7 +16,7 @@ describe('EmployeeList', () => {
 		expect(h2Element).not.toContainHTML("Error");
 	});
 
-test('Display a loading message while attempting to read the database, then display an error message if there is an error', async () => {
+	test('Display a loading message while attempting to read the database, then display an error message if there is an error', async () => {
 		jest.spyOn(require('../data/database'), 'readDB').mockReturnValue(false);
 
 		render(<EmployeeList />);
