@@ -14,16 +14,21 @@ export default function EmployeeList(): JSX.Element {
 
 	const loadData = async () => {
 		const data: any = await readDB();
-		if (data) {
+		
+		try {
 			const columnsData: Array<string> = Object.getOwnPropertyNames(data[0]);
 			const rowsData: Array<Array<string>> = data.map((object: any) => Object.values(object));
 			setColumnsData(columnsData);
 			setRowsData(rowsData);
 		}
-		else {
+
+		catch {
 			setError(true);
 		}
-		setTimeout(() => setLoading(false), 250);
+		finally {
+			setTimeout(() => setLoading(false), 250);
+		}
+
 	}
 
 
