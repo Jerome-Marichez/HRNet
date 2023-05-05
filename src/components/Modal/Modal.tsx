@@ -1,4 +1,5 @@
 import "./Modal.scss";
+import React from "react";
 
 /* <Modal isOpen={modalOpen}
 				contentHeader={<div className="modal-line">HRNet</div>}
@@ -29,6 +30,7 @@ interface ModalProps {
 	modalShadow?: string;
 	modalMaxWidth?: string;
 }
+
 /**
  * 
  * @param isOpen A boolean with state True if Modal is show, false if Modal is not show
@@ -45,7 +47,8 @@ interface ModalProps {
  * @param modalMaxWidth A optional parameter to set max-width propriety of modal (ex: "500px")
  * @returns A Modal with his content
  */
-export default function Modal(props: ModalProps): JSX.Element {
+
+function Modal(props: ModalProps): JSX.Element {
 
 	const { isOpen, contentBody, onClose } = props; // Minimal Props
 	const { closeButton, contentFooter, contentHeader } = props; // Custom JSX.Element Props
@@ -73,4 +76,6 @@ export default function Modal(props: ModalProps): JSX.Element {
 			</div>
 		</div>
 	);
-}
+} 
+
+export default React.memo(Modal);
