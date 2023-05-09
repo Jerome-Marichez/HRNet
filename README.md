@@ -8,7 +8,7 @@ Projet 14 OpenClassRoom - Migrer un projet jQuery vers React
 
 ## Introduction
 
-- HRNet is a project that involves converting an old dashboard in jQuery into a new one using React.
+- HRNet is a project that aims to convert an old jQuery dashboard into a new one using React. The new version is better in terms of performance and SEO, and the code is also fully covered by Jest tests.
 
 - The new website can be accessed through this link [https://hr-net-navy.vercel.app](https://hr-net-navy.vercel.app).
 - The old website can be accessed through this link [https://p12-front-end-old.vercel.app/](https://p12-front-end-old.vercel.app/).
