@@ -3,8 +3,8 @@ import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Dropdown from 'react-dropdown';
-import { Form, Field } from 'react-final-form'
-import Modal from "../Modal/Modal";
+import { Form, Field } from 'react-final-form';
+import { Modal } from "jerome-react-modal";
 import insertDB from "../../data/database";
 
 
