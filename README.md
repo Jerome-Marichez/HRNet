@@ -1,5 +1,5 @@
 # HRNet
-Projet 14 OpenClassRoom - Migrer un projet jQuery vers React
+Project 14 OpenClassRoom - Migrate a jQuery project to React
 
 ## Table of Contents
 - [Introduction](#introduction)
